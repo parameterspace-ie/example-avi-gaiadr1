@@ -1,0 +1,67 @@
+{% load staticfiles %}
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+      <h4>HR diagrams from: <a href="https://arxiv.org/abs/1609.04172" target="_blank">Gaia Data Release 1. Summary of the astrometric, photometric, and survey properties</a></h4>
+  </div>
+  <div class="panel-body">
+  <div class="col-lg-12 col-md-12">
+    <table class="table table-condensed">
+      <tbody>
+        <tr>
+          <th>Completed:</th>
+          <td>{{ hr.generation_date }}</td>
+        </tr>
+        <tr>
+          <th>Query:</th>
+          <td>{{ hr.query }}</td>
+        </tr>
+     </tbody>
+    </table>
+  </div>
+    
+   </div>
+</div>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+<div class="panel panel-info">
+  <div class="panel-heading" role="tab" id="sourcestats-heading">
+    <h4>
+      <a class="collapsed" role="button" data-toggle="collapse" href="#sourcestats-collapse" aria-expanded="false" aria-controls="sourcestats-collapse">
+            Source Statistics
+      </a>
+    </h4>
+  </div>
+  <div id="sourcestats-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="sourcestats-heading">
+  <div class="panel-body">
+      {{ hr.source_pd_profile|safe }}
+   </div>
+   </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading" role="tab" id="plots-heading">
+  <h4>
+      <a class="collapsed" role="button" data-toggle="collapse" href="#plots-collapse" aria-expanded="true" aria-controls="plots-collapse">
+          HR
+      </a>
+  </h4>
+  </div>
+  <div id="plots-collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="plots-heading">
+  <div class="panel-body">
+    
+          {{ hr.hip_div|safe }}
+          {{ hr.hip_script|safe }}
+          <br/>
+          {{ hr.gaiadr1_div|safe }}
+          {{ hr.gaiadr1_script|safe }}
+  </div>
+   </div>
+</div>
+
+
+</div>
+
+

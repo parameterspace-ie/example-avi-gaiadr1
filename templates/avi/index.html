@@ -1,0 +1,72 @@
+{% extends "base/base.html" %}
+
+{% load staticfiles %}
+
+{% block avi_title %}
+GAVIP Example AVIs: Gaia DR1 AVI
+{% endblock avi_title %}
+
+
+{% block head %}
+<link href="{% static 'avi/css/avi.css' %}" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.css" type="text/css" />
+        
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
+<script src="{% static 'jquery/jquery.cookie.js' %}"></script>
+<script type="text/javascript" src="{% static 'datatables/datatables.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'datatables/datatables.min.css' %}"/>
+<script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.js"></script>
+<script type="text/javascript">
+Bokeh.set_log_level("info");
+</script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+{% endblock head %}
+
+{% block avi_content %}
+
+<div class="container-fluid">
+  
+  <div class="row navoffset">
+    <div class="col-sm-4 col-md-3 col-lg-2">
+      {% include "avi/avi_sidenav.html" %}
+    </div>  
+    <div class="col-sm-8 col-md-9 col-lg-10">
+      <div id="avi_tabcontent" class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade {% if hr_invalid %} active in {% endif %}" data-title="SAMPLE" id="hr" aria-labelledby="hr-tab">
+          {% include "avi/panel_hr.html" %}
+        </div>
+          
+        <div role="tabpanel" class="tab-pane fade" id="job" aria-labelledby="job-tab" anchor="job-tab">
+          {% include "avi/panel_job_list.html" %}
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade {% if hr %} active in {% endif %}" id="hr_output" aria-labelledby="hr_output-tab">
+          {% include "avi/panel_hr_output.html" %}
+        </div>
+        
+        <div role="tabpanel" class="tab-pane fade" data-title="SAMPLE" id="help" aria-labelledby="help-tab">
+          {% include "avi/panel_help.html" %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock avi_content %}

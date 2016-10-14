@@ -1,0 +1,4 @@
+# Use this file to list packages you would like to have installed in your AVI using pip.
+# For information on the expected format of this file see:
+# https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format
+
