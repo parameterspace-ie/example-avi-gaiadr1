@@ -13,16 +13,16 @@ from rest_framework.views import APIView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 
-from avi.forms import HrForm
-from avi.models import HrJob
+from avi.forms import HrForm, VariableSourceForm
 
-from pipeline import manager
+from pipeline.models import AviJobRequest
 
 logger = logging.getLogger(__name__)
 
 def get_default_context():
     return {
             'hr_form': HrForm(),
+            'variable_form': VariableSourceForm(),
             }
 
 class Index(APIView):
@@ -41,9 +41,22 @@ def hr_generation(request):
     form = HrForm(request.POST)
         
     if not form.is_valid():
-        context = HrForm()
+        context = get_default_context()
         context.update({'hr_invalid': True, 
                         'hr_form': form})
+        return render(request, 'avi/index.html', context)
+    form.save()
+    return redirect('%s#job-tab' % resolve_url('avi:index'))
+
+
+@require_http_methods(["POST"])
+def variable_visualisation(request):
+    form = VariableSourceForm(request.POST)
+        
+    if not form.is_valid():
+        context = get_default_context()
+        context.update({'variablesource_invalid': True, 
+                        'variable_form': form})
         return render(request, 'avi/index.html', context)
     form.save()
     return redirect('%s#job-tab' % resolve_url('avi:index'))
@@ -66,7 +79,7 @@ def load_job_output(job_id, context):
         Job output JSON
     """
     logger.info('At start of load_job_output(), context is %s', str(context).encode('utf-8'))
-    file_path = manager.get_pipeline_status(job_id)['result_path']#['output']
+    file_path = AviJobRequest.objects.get(job_id=job_id).result_path
     context['job_id'] = job_id
     with open(file_path, 'r') as out_file:
         context.update(json.load(out_file))

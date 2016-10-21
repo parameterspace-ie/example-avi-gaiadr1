@@ -21,6 +21,7 @@ urlpatterns = patterns(
     
     # HTML views
     url(r'^hr$', views.hr_generation, name='hr_generation'),
+    url(r'^variable$', views.variable_visualisation, name='variable_visualisation'),
     
     # REST views
     url(r'^$', views.Index.as_view(), name='index'),

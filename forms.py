@@ -4,7 +4,7 @@ The model subclasses of ``AviJob`` themselves are implemented in :mod:`avi.model
 """
 from django.forms import ModelForm, Textarea
 
-from avi.models import HrJob
+from avi.models import HrJob, VariableSourceJob
 
 DEFAULT_EXCLUDED_MODEL_FIELDS = [
                                  'expected_runtime',
@@ -26,3 +26,16 @@ class HrForm(ModelForm):
         widgets = {
           'query': Textarea(attrs={'rows':15, 'cols':80}),
         }
+
+
+class VariableSourceForm(ModelForm):
+    """
+    ModelForm for variable source visualisation
+    """
+    class Meta:
+        model = VariableSourceJob
+        exclude = DEFAULT_EXCLUDED_MODEL_FIELDS
+        
+#         widgets = {
+#           'source_id': Textarea(attrs={'rows':1, 'cols':80}),
+#         }

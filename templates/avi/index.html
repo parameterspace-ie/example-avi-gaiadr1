@@ -8,6 +8,10 @@ GAVIP Example AVIs: Gaia DR1 AVI
 
 
 {% block head %}
+
+<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'bootstrap/css/bootstrap.min.js' %}" rel="stylesheet" type="text/css">
+
 <link href="{% static 'avi/css/avi.css' %}" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.css" type="text/css" />
@@ -51,12 +55,20 @@ Bokeh.set_log_level("info");
           {% include "avi/panel_hr.html" %}
         </div>
           
+        <div role="tabpanel" class="tab-pane fade {% if variablesource_invalid %} active in {% endif %}" id="variablesource" aria-labelledby="variablesource-tab">
+          {% include "avi/panel_variablesource.html" %}
+        </div>
+          
         <div role="tabpanel" class="tab-pane fade" id="job" aria-labelledby="job-tab" anchor="job-tab">
           {% include "avi/panel_job_list.html" %}
         </div>
 
         <div role="tabpanel" class="tab-pane fade {% if hr %} active in {% endif %}" id="hr_output" aria-labelledby="hr_output-tab">
           {% include "avi/panel_hr_output.html" %}
+        </div>
+        
+        <div role="tabpanel" class="tab-pane fade {% if variablesource %} active in {% endif %}" id="variablesource_output" aria-labelledby="variablesource_output-tab">
+          {% include "avi/panel_variablesource_output.html" %}
         </div>
         
         <div role="tabpanel" class="tab-pane fade" data-title="SAMPLE" id="help" aria-labelledby="help-tab">
