@@ -9,21 +9,22 @@ GAVIP Example AVIs: Gaia DR1 AVI
 
 {% block head %}
 
-<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-<link href="{% static 'bootstrap/js/bootstrap.min.js' %}" rel="stylesheet" type="text/css">
+<script src="{% static 'jquery/jquery.js' %}"></script>
+<script src="{% static 'jquery/jquery.cookie.js' %}"></script>
+<script src="{% static 'datatables/datatables.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
 <link href="{% static 'avi/css/avi.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'datatables/datatables.min.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.css" type="text/css" />
 <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.js"></script>
-        
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js" charset="utf-8"></script>
-<script src="{% static 'jquery/jquery.cookie.js' %}"></script>
-<script type="text/javascript" src="{% static 'datatables/datatables.min.js' %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'datatables/datatables.min.css' %}"/>
+<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.css" type="text/css" />
+
 <script type="text/javascript">
 Bokeh.set_log_level("info");
 </script>
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
