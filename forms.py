@@ -24,7 +24,7 @@ class HrForm(ModelForm):
         exclude = DEFAULT_EXCLUDED_MODEL_FIELDS
         
         widgets = {
-          'query': Textarea(attrs={'rows':15, 'cols':80}),
+          'query': Textarea(attrs={'rows':15, 'style':'width:100%'}),
         }
 
 
