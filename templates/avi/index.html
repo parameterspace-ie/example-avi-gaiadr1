@@ -1,0 +1,58 @@
+{% extends "base/base.html" %}
+
+{% load staticfiles %}
+
+{% block avi_title %}
+GAVIP Example AVIs: Gaia DR1 AVI
+{% endblock avi_title %}
+
+<link href="{% static 'avi/css/avi.css' %}" rel="stylesheet" type="text/css">
+
+{% block avi_content %}
+
+<div class="container-fluid">
+  
+  <div class="row navoffset">
+    <div class="col-sm-4 col-md-3 col-lg-2">
+      {% include "avi/avi_sidenav.html" %}
+    </div>  
+    <div class="col-sm-8 col-md-9 col-lg-10">
+      <div id="avi_tabcontent" class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade {% if hr_invalid %} active in {% endif %}" data-title="SAMPLE" id="hr" aria-labelledby="hr-tab">
+          {% include "avi/panel_hr.html" %}
+        </div>
+          
+        <div role="tabpanel" class="tab-pane fade {% if variablesource_invalid %} active in {% endif %}" id="variablesource" aria-labelledby="variablesource-tab">
+          {% include "avi/panel_variablesource.html" %}
+        </div>
+          
+        <div role="tabpanel" class="tab-pane fade" id="job" aria-labelledby="job-tab" anchor="job-tab">
+          {% include "avi/panel_job_list.html" %}
+        </div>
+
+        <div role="tabpanel" class="tab-pane fade {% if hr %} active in {% endif %}" id="hr_output" aria-labelledby="hr_output-tab">
+          {% include "avi/panel_hr_output.html" %}
+        </div>
+        
+        <div role="tabpanel" class="tab-pane fade {% if variablesource %} active in {% endif %}" id="variablesource_output" aria-labelledby="variablesource_output-tab">
+          {% include "avi/panel_variablesource_output.html" %}
+        </div>
+        
+        <div role="tabpanel" class="tab-pane fade" data-title="SAMPLE" id="help" aria-labelledby="help-tab">
+          {% include "avi/panel_help.html" %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.js"></script>
+<link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.3.min.css" type="text/css" />
+
+<script type="text/javascript">
+Bokeh.set_log_level("info");
+</script>
+
+{% endblock avi_content %}

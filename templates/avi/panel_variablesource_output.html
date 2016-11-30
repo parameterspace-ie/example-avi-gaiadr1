@@ -1,0 +1,100 @@
+{% load staticfiles %}
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+      <h4>Variable Source Visualisation from: <a href="https://github.com/vickyscowcroft/gaia_sprints/blob/master/variable_star_visualisation.ipynb">visualisation notebook by Vicky Snowcroft</a></h4>
+  </div>
+  <div class="panel-body">
+  <div class="col-lg-12 col-md-12">
+    <table class="table table-condensed">
+      <tbody>
+        <tr>
+          <th>Completed:</th>
+          <td>{{ variablesource.generation_date }}</td>
+        </tr>
+        <tr>
+          <th>Source Id:</th>
+          <td>{{ variablesource.source_id }}</td>
+        </tr>
+        <tr>
+          <th>Type:</th>
+          <td>{{ variablesource.source_type }}</td>
+        </tr>
+        <tr>
+          <th>Period:</th>
+          <td>{{ variablesource.period }}</td>
+        </tr>
+        <tr>
+          <th>Mean G Magnitude:</th>
+          <td>{{ variablesource.phot_g_mean_mag }}</td>
+        </tr>
+        <tr>
+          <th>RA:</th>
+          <td>{{ variablesource.ra }}</td>
+        </tr>
+        <tr>
+          <th>Dec:</th>
+          <td>{{ variablesource.dec }}</td>
+        </tr>
+        <tr>
+          <th>l:</th>
+          <td>{{ variablesource.l }}</td>
+        </tr>
+        <tr>
+          <th>b:</th>
+          <td>{{ variablesource.b }}</td>
+        </tr>
+        <tr>
+          <th>Parallax:</th>
+          <td>{{ variablesource.parallax }}</td>
+        </tr>
+        <tr>
+          <th>Parallax error:</th>
+          <td>{{ variablesource.parallax }}</td>
+        </tr>
+     </tbody>
+    </table>
+  </div>
+    
+   </div>
+</div>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+<div class="panel panel-info">
+  <div class="panel-heading" role="tab" id="photometry-heading">
+    <h4>
+      <a class="collapsed" role="button" data-toggle="collapse" href="#photometry-collapse" aria-expanded="false" aria-controls="photometry-collapse">
+            Photometry
+      </a>
+    </h4>
+  </div>
+  <div id="photometry-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="photometry-heading">
+  <div class="panel-body">
+      {{ variablesource.phot_profile|safe }}
+   </div>
+   </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading" role="tab" id="variableplots-heading">
+  <h4>
+      <a class="collapsed" role="button" data-toggle="collapse" href="#variableplots-collapse" aria-expanded="true" aria-controls="variableplots-collapse">
+          Visualisation
+      </a>
+  </h4>
+  </div>
+  <div id="variableplots-collapse" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="variableplots-heading">
+  <div class="panel-body">
+    
+          {{ variablesource.source_div|safe }}
+          {{ variablesource.source_script|safe }}
+  </div>
+   </div>
+</div>
+
+
+</div>
+
+

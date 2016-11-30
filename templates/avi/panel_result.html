@@ -1,0 +1,20 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    Result view help
+  </div>
+  <div class="panel-body">
+      <p>This is a panel which renders one of the job results.</p>
+
+      <p>Toggle the variable details to see more information about the results.</p>
+
+      <ul>
+        <li> The data is rendered using Pandas and Pandas-profiling.</li>
+        <li> The pipeline creates a large JSON object using several columns from the resulting VOTable from the query.</li>
+        <li> Pandas is used to create the HTML that presents the data. This is stored in the output of the job.</li>
+        <li> When a result is accessed, the HTML for a particular job is passed in as context to the rest of the results template. </li>
+
+  </div>
+</div>
+
+<div id="container">
+</div>
